@@ -23,16 +23,29 @@ namespace IntoSport.Controllers
             tmp = 0;
             int.TryParse(Request.Form["Quantity"], out tmp);
             product.Quantity = tmp;
-            foreach(string details in Request.Params.Keys)
+            IntoSport.Helpers.ProductHelper productdetails = new IntoSport.Helpers.ProductHelper();
+            List<string> keys = new List<string>();
+            foreach(KeyValuePair<string,string>details in productdetails.getDetails(product.ID))
             {
-
-                if(details != "Quantity" || details  != "id")
+                if (!keys.Contains(details.Key))
+                {
+                    keys.Add(details.Key);
+                }
+          
+                
+          
+            }
+            foreach(string key in keys)
+            {
+                if (Request.Form[key] != null)
                 {
                     DetailWaarde detailwaarde = new DetailWaarde();
-                    detailwaarde.waarde = details;
+                    detailwaarde.waarde = Request.Form.Get(key).Split(',')[1];
                     product.DetailWaardeList.Add(detailwaarde);
                 }
             }
+
+           
 
             return RedirectToAction("addToCart", product);
 

@@ -16,7 +16,7 @@ namespace IntoSport.Models
 
         public CartProduct(){
             DetailWaardeList = new List<DetailWaarde>();
-
+           
     }
     }
 

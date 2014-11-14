@@ -3,6 +3,7 @@
 
 @{
     var total = 0.0;
+    var CPVList = ViewData["CPVList"] as List<CartProductView>;
 }
 <div class="cartWrapper">
     <table class="products">
@@ -13,21 +14,20 @@
                 <td>Prijs</td>
             </tr>
         </thead>
-        @{if (Request.Cookies["cart"] != null) {
-              var productList = ViewData["productList"] as List<Product>;
-              var quantList = ViewData["quantList"] as List<int>;
-              for (int i = 0; i < productList.Count; i++)
-              {
-                  total += productList[i].prijs * quantList[i];
-                  var productTotal = productList[i].prijs * quantList[i];
+        @{if (CPVList != null)
+        {
+            int index = 0;
+            foreach (CartProductView CPV in CPVList)
+            {
+                double productTotal = CPV.Product.prijs * CPV.Hoeveelheid;
                 <tbody>
                     <tr>
-                        <td>@productList[i].naam <br /><br /> @productList[i].id <br /><br /> <a href="/cart/remove/@productList[i].id">Verwijder</a></td>
-                        <td><div>Prijs p/s:</div> &euro;@productList[i].prijs <br /><br /> <div>Aantal:</div> @quantList[i]</td>
+                        <td>@CPV.Product.naam <br /><br />  <br /><br /> <a href="/cart/remove/@index">Verwijder</a></td>
+                        <td><div>Prijs p/s:</div> &euro;@CPV.Product.prijs <br /><br /> <div>Aantal:</div> @CPV.Hoeveelheid</td>
                         <td>&euro;@productTotal</td>
                     </tr>
                 </tbody>
-              }
+            }
         }
         }
     </table>

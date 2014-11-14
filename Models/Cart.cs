@@ -7,7 +7,6 @@ namespace IntoSport.Models
 {
     public class Cart
     {
-        public List<int> ProductIds = new List<int>();
-        public List<int> ProductQuantity = new List<int>();
+        public List<CartProduct> productList = new List<CartProduct>();
     }
 }

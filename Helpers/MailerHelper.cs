@@ -26,7 +26,7 @@ namespace IntoSport.Helpers
                 client.Send(mail);
             }catch(Exception e)
             {
-
+                
             }
            
         }

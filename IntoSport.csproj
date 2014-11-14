@@ -155,6 +155,7 @@
     <Compile Include="Models\Bestelling.cs" />
     <Compile Include="Models\BreadCrumbs.cs" />
     <Compile Include="Models\CartProduct.cs" />
+    <Compile Include="Models\CartProductView.cs" />
     <Compile Include="Models\KlantGegevens.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\Cart.cs" />

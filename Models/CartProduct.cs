@@ -9,7 +9,7 @@ namespace IntoSport.Models
     public class CartProduct
     {
        
-        int ID { get; set; }
+        public int ID { get; set; }
         [Range(1, Int32.MaxValue)]
         public int Quantity { get; set; }
         public List<DetailWaarde> DetailWaardeList { get; set; }

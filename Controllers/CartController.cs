@@ -14,7 +14,30 @@ namespace IntoSport.Controllers
         //
         // GET: /Cart/
 
+        public ActionResult AddProduct()
+        {
+            CartProduct product = new CartProduct();
+            int tmp = 0 ;
+            int.TryParse(Request.Form["id"], out tmp);
+            product.ID = tmp;
+            tmp = 0;
+            int.TryParse(Request.Form["Quantity"], out tmp);
+            product.Quantity = tmp;
+            foreach(string details in Request.Params.Keys)
+            {
 
+                if(details != "Quantity" || details  != "id")
+                {
+                    DetailWaarde detailwaarde = new DetailWaarde();
+                    detailwaarde.waarde = details;
+                    product.DetailWaardeList.Add(detailwaarde);
+                }
+            }
+
+            return RedirectToAction("addToCart", product);
+
+           
+        }
         public ActionResult Index()
         {
             var cart = Session["cart"] as Cart;

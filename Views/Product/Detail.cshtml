@@ -30,9 +30,7 @@
     <div class="productDetails">
         <h1>@product.naam</h1>
         <div class="divider"></div>
-        @*<form action="/cart/addToCart" method="get">*@
-          @using (Html.BeginForm("addToCart", "cart", FormMethod.Get))
-          {
+        <form action="/cart/AddProduct" method="post">
 
             <div style="height:300px;overflow-y:scroll">
 
@@ -49,16 +47,17 @@
                             <h4>@detailName</h4>
                             <input type="hidden" value="@detailName" name="@detailName" />
                         }
-                        @Html.RadioButtonFor(model => model.DetailWaardeList, @detail.Value.ToString())@detail.Value.ToString()<br/>
-                        
+                        <input type="radio" name="@detail.Key.ToString()" value="@detail.Value.ToString()" />@detail.Value.ToString();
+                    @*@Html.RadioButtonFor(model => model.DetailWaardeList, @detail.Value.ToString())@detail.Value.ToString()<br/>*@
+
                     }
                 }
 
 
             </div>
-       
-            
-        
+
+
+
             <div class="bottomContainer">
 
                 <p class="price">Prijs: <span>&euro; @product.prijs</span><p>
@@ -79,13 +78,13 @@
                         <script>
 
                         </script>
-                        <label>Aantal: @Html.EditorFor(model => model.Quantity, new { @type = "text", @Min = "0" })</label>                       
+                        <label>Aantal:<input type="number" name="Quantity" value="" min="0"/></label>
                         <input type="submit" value="Plaats in winkelwagen" name="submit" class="btn btn-huge btn-primary">
-                        
-                </div>
+
+                    </div>
+            </div>
+            </form>
 </div>
-          }
-    </div>
 </div>
          
 <div class="productDetailContainerBottom">

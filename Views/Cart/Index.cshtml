@@ -22,11 +22,12 @@
                 double productTotal = CPV.Product.prijs * CPV.Hoeveelheid;
                 <tbody>
                     <tr>
-                        <td>@CPV.Product.naam <br /><br />  <br /><br /> <a href="/cart/remove/@index">Verwijder</a></td>
+                        <td>@CPV.Product.naam <br /><br />  <br /><br /> <a href="/cart/Remove?cart_id=@index">Verwijder</a></td>
                         <td><div>Prijs p/s:</div> &euro;@CPV.Product.prijs <br /><br /> <div>Aantal:</div> @CPV.Hoeveelheid</td>
                         <td>&euro;@productTotal</td>
                     </tr>
                 </tbody>
+                index++;
             }
         }
         }

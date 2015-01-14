@@ -12,12 +12,12 @@ namespace IntoSport.Models
         public int ID { get; set; }
         [Range(1, Int32.MaxValue)]
         public int Quantity { get; set; }
-        public List<DetailWaarde> DetailWaardeList { get; set; }
+        public List<DetailWaarde> DetailWaardeList = new List<DetailWaarde>();
 
         public CartProduct(){
-            DetailWaardeList = new List<DetailWaarde>();
+            //DetailWaardeList = new List<DetailWaarde>();
            
-    }
+        }
     }
 
   

@@ -8,5 +8,8 @@ namespace IntoSport.Models
     public class Cart
     {
         public List<CartProduct> productList = new List<CartProduct>();
+
     }
+
+
 }

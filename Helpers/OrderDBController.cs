@@ -155,7 +155,7 @@ namespace IntoSport
                     Query detailWaardeIdQuery = new Query();
                     detailWaardeIdQuery.Select("id");
                     detailWaardeIdQuery.From("detail_waarde");
-                    detailWaardeIdQuery.Where("waarde =" + @detailWaarde.waarde);
+                    detailWaardeIdQuery.Where("waarde ='" + @detailWaarde.waarde + "'");
 
                     int waardeId = 0;
 
